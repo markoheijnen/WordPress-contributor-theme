@@ -112,6 +112,11 @@ class Contributor_Theme {
 
 	private function load_files() {
 		/**
+		 * Main class that builds elements based on the user of WordPress.org
+		 */
+		require get_template_directory() . '/inc/profile-builder.php';
+
+		/**
 		 * Custom template tags for this theme.
 		 */
 		require get_template_directory() . '/inc/template-tags.php';
