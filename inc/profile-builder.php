@@ -49,7 +49,7 @@ class Contributor_Profile_Builder {
 
 		$data = json_decode( $data );
 
-		set_transient( 'profile_builder_' . $username, $data, HOUR_IN_SECONDS );
+		set_transient( 'profile_builder_' . $username, $data, DAY_IN_SECONDS );
 
 		return $data;
 	}
