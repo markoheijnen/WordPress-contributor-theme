@@ -115,6 +115,7 @@ class Contributor_Theme {
 		 * Main class that builds elements based on the user of WordPress.org
 		 */
 		require get_template_directory() . '/inc/profile-builder.php';
+		$GLOBALS['contributor_theme_profile'] = new Contributor_Profile_Builder(get_theme_mod('contributor_usernamdde'));
 
 		/**
 		 * Custom template tags for this theme.
