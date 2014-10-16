@@ -1,0 +1,67 @@
+.contributor-search:before, .contributor-search:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+.contributor-search {
+	zoom:1;
+	padding: 15px;
+	background: #444;
+	background: rgba(0,0,0,.2);
+	margin-bottom: 20px;
+}
+
+.contributor-search-input {
+	margin-right: 110px;
+}
+
+.contributor-search input {
+	width: 100%;
+	padding: 10px 10px;
+	float: left;
+	border: 0;
+	background: #eee;
+	margin: 0;
+}
+
+.contributor-search input:focus {
+	outline: 0;
+	background: #fff;
+	box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.contributor-searchinput::-webkit-input-placeholder, .contributor-search input:-moz-placeholder, .contributor-search input:-ms-input-placeholder {
+	color: #999;
+	font-weight: normal;
+	font-style: italic;
+}
+
+/* Form submit button */
+.wp-core-ui .contributor-search button {
+	overflow: visible;
+	position: relative;
+	float: right;
+	border: 0;
+	padding: 0;
+	height: 40px;
+	width: 110px;
+	text-transform: uppercase;
+	border-radius: 0;
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	box-shadow: none;
+}
+
+.wp-core-ui .contributor-search button:before { /* left arrow */
+	content: '';
+	position: absolute;
+	border-top: 8px solid transparent;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent; 
+	border-right-color: inherit; 
+	border-bottom: 8px solid transparent;
+	border-width: 8px 8px 8px 0;
+	border-style: solid solid solid none;
+	top: 12px;
+	left: -8px;
+}

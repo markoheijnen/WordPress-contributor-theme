@@ -130,6 +130,14 @@ class Contributor_Theme {
 		 * Customizer additions.
 		 */
 		require get_template_directory() . '/inc/customizer.php';
+
+		if ( is_admin() ) {
+			/**
+			 * Add theme settings page
+			 */
+			require get_template_directory() . '/inc/theme-settings.php';
+			$GLOBALS['contributor_theme_settings'] = new Contributor_Theme_Settings();
+		}
 	}
 
 }
