@@ -6,7 +6,7 @@ class Contributor_Profile_Builder {
 
 	public function __construct( $username ) {
 		$this->username = $username;
-		$this->wpcentral_data = $this->get_data( $username );
+		$this->wpcentral_data = $this->get_profile_data( $username );
 	}
 
 	public function get_name() {
@@ -15,6 +15,10 @@ class Contributor_Profile_Builder {
 
 	public function get_avatar( $size = 96 ) {
 		return $this->wpcentral_data->avatar . '?s=' . $size;
+	}
+
+	public function get_data() {
+		return $this->wpcentral_data;
 	}
 
 	public function show_stats() {
@@ -31,7 +35,7 @@ class Contributor_Profile_Builder {
 	}
 
 
-	private function get_data( $username ) {
+	private function get_profile_data( $username ) {
 		if ( ! $username ) {
 			return $this->clean_data( $username );
 		}
