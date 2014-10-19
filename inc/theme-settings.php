@@ -7,6 +7,7 @@
 
 
 class Contributor_Theme_Settings {
+	private $template_data;
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'theme_menu' ), 1 );
@@ -64,7 +65,7 @@ class Contributor_Theme_Settings {
 
 			$contributor_username = get_theme_mod('contributor_username');
 			$profile = new Contributor_Profile_Builder( $contributor_username );
-			$data = $profile->get_data();
+			$user_data = $profile->get_data();
 			?>
 
 			<br />
@@ -80,9 +81,11 @@ class Contributor_Theme_Settings {
 
 				<div id="contributions">
 					<?php
-					if ( $contributor_username && $data ) {
-						foreach ( $template_blocks as $block ) {
+					if ( $contributor_username && $user_data ) {
+						echo $this->parse_backbone( 'profile_template', $user_data );
 
+						foreach ( $template_blocks as $block ) {
+							echo $this->parse_backbone( 'block_template', (object)$block );
 						}
 					}
 
@@ -103,6 +106,35 @@ class Contributor_Theme_Settings {
 		</script>
 
 		<?php
+	}
+
+
+	private function parse_backbone( $function, $data ) {
+		$this->template_data = $data;
+
+		$html = call_user_func( array( $this, $function ) );
+		$html = preg_replace_callback('#<\# \if\s(.+?) { \#>(.+?)\<\# } \#>#s', array( $this, 'parse_backbone_if' ), $html );
+		$html = preg_replace_callback( '!\{\{ (data\.\w+) \}\}!', array( $this, 'parse_backbone_var' ), $html );
+
+		$this->template_data = false;
+
+		return $html;
+	}
+
+	private function parse_backbone_if( $matches ) {
+		$key = substr( substr( $matches[1], 7 ), 0, -2 );
+
+		if ( isset( $this->template_data->$key ) ) {
+			return $matches[2];
+		}
+		
+		return '';
+	}
+
+	private function parse_backbone_var( $matches ) {
+		$key = substr( $matches[1], 5 );
+		
+		return $this->template_data->$key;
 	}
 
 
