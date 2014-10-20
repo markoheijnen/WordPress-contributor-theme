@@ -98,7 +98,7 @@ class Contributor_Theme {
 	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'contributor-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'contributor-style', get_template_directory_uri() . '/css/style.css' );
 
 		wp_enqueue_script( 'contributor-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
