@@ -109,6 +109,9 @@ class Contributor_Theme_Settings {
 	}
 
 
+	/**
+	 * Parser a given template by checking the if statement and parsing the variables
+	 */
 	private function parse_backbone( $function, $data ) {
 		$this->template_data = $data;
 
@@ -121,20 +124,31 @@ class Contributor_Theme_Settings {
 		return $html;
 	}
 
+	/**
+	 * Parsing the if statement. The brackets need to be removed due the fact the regex doesn't do that yet.
+	 * Also the data. gets removed by substr before checking the template data.
+	 */
 	private function parse_backbone_if( $matches ) {
 		$key = substr( substr( $matches[1], 7 ), 0, -2 );
 
-		if ( isset( $this->template_data->$key ) ) {
+		if ( isset( $this->template_data->$key ) && $this->template_data->$key ) {
 			return $matches[2];
 		}
 		
 		return '';
 	}
 
+	/**
+	 * Removes data. from the string and then checks the template data.
+	 */
 	private function parse_backbone_var( $matches ) {
 		$key = substr( $matches[1], 5 );
 		
-		return $this->template_data->$key;
+		if ( isset( $this->template_data->$key ) ) {
+			return $this->template_data->$key;
+		}
+		
+		return '';
 	}
 
 
