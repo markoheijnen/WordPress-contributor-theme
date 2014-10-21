@@ -22,6 +22,12 @@ class Contributor_Theme {
 		$this->load_files();
 	}
 
+
+	public static function get_profile() {
+		return $GLOBALS['contributor_theme_profile'];
+	}
+
+
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
