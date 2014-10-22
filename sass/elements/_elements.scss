@@ -5,6 +5,78 @@ hr {
 	margin-bottom: 1.5em;
 }
 
+.block {
+	position: relative;
+	background: #88b7d5;
+	border-bottom: 4px solid #c2e1f5;
+}
+
+body.arrows .block:after, body.arrows .block:before {
+	top: 100%;
+	left: 10%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+body.arrows .block:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #88b7d5;
+	border-width: 30px;
+	margin-left: -30px;
+}
+
+/*.block:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #c2e1f5;
+	border-width: 36px;
+	margin-left: -36px;
+}*/
+
+
+.wrapper {
+	margin: 0 auto;
+	width: 900px;
+}
+
+.site-footer {
+	border: 0;
+	margin: 0;
+}
+.site-footer:after, .site-footer:before {
+	display: none;
+}
+
+
+body {
+	margin-top: 3.2em;
+}
+#site-navigation {
+	background: #FFFFFF;
+	border-bottom: 2px solid #88b7d5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+}
+.admin-bar #site-navigation {
+	top: 30px;
+}
+#site-navigation ul {
+	background: #FFFFFF;
+}
+#site-navigation ul.nav-menu a {
+	padding: .844em 1.125em;
+	text-decoration: none;
+}
+
+
+
+
 @import "lists";
 
 img {

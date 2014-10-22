@@ -6,6 +6,11 @@
  *
  * @package Contributor
  */
+
+$features = array(
+	'arrows',
+);
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -18,7 +23,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( $features ); ?>>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'contributor' ); ?></a>
 
