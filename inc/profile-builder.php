@@ -14,7 +14,11 @@ class Contributor_Profile_Builder {
 	}
 
 	public function get_avatar( $size = 96 ) {
-		return $this->wpcentral_data->avatar . '?s=' . $size;
+		if ( $this->wpcentral_data->avatar ) {
+			return $this->wpcentral_data->avatar . '?s=' . $size;
+		}
+
+		return '';
 	}
 
 	public function get_data() {
