@@ -85,7 +85,11 @@ class Contributor_Theme_Settings {
 						echo $this->parse_backbone( 'profile_template', $user_data );
 
 						foreach ( $template_blocks as $block ) {
-							echo $this->parse_backbone( 'block_template', (object)$block );
+							if ( isset( $block['count'] ) ) {
+								$block['count'] = $user_data->$block['count'];
+							}
+
+							echo $this->parse_backbone( 'block_template', (object) $block );
 						}
 					}
 
@@ -174,6 +178,11 @@ class Contributor_Theme_Settings {
 	private function block_template() {
 		$html  = '<div class="contributor-contribution contributor-block">';
 		$html .= '<h3>{{ data.title }}</h3>';
+
+		$html .= '<# if ( data.count ) { #>';
+		$html .= '	{{ data.count }}';
+		$html .= '<# } #>';
+
 
 		$html .= '</div>';
 
