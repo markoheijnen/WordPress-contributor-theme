@@ -29,13 +29,6 @@ body.arrows .block:after {
 	margin-left: -30px;
 }
 
-/*.block:before {
-	border-color: rgba(194, 225, 245, 0);
-	border-top-color: #c2e1f5;
-	border-width: 36px;
-	margin-left: -36px;
-}*/
-
 
 .wrapper {
 	margin: 0 auto;
@@ -46,7 +39,7 @@ body.arrows .block:after {
 	border: 0;
 	margin: 0;
 }
-.site-footer:after, .site-footer:before {
+body.arrows .site-footer:before, body.arrows .site-footer:after {
 	display: none;
 }
 
